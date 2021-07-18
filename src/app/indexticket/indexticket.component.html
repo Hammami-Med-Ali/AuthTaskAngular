@@ -1,0 +1,51 @@
+<html>
+<div class="col">
+    <div class="card">
+      <!-- Card header -->
+      <div class="card-header border-0">
+        <h3 class="mb-0">Light table</h3>
+      </div>
+      <!-- Light table -->
+      <div class="table-responsive">
+        <table class="table align-items-center table-flush">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col" class="sort" data-sort="name">Id</th>
+              <th scope="col" class="sort" data-sort="budget">category</th>
+              <th scope="col" class="sort" data-sort="status">subject</th>
+              
+              <th scope="col" class="sort" data-sort="completion">description</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let ticket of tickets">
+             
+              <td>
+               {{ticket.id}}
+              </td>
+              <td>
+                {{ticket.category}}
+              </td>
+              <td>
+                {{ticket.subject}}
+              </td>
+              <td>
+                {{ticket.description}}
+              </td>
+              <td> <button color="success" routerLink='/indexticket/{{
+                ticket.id }}'>Update</button></td>
+            </tr>
+            
+            
+          
+           
+          </tbody>
+        </table>
+      </div>
+      <!-- Card footer -->
+      
+    </div>
+  </div>
+  </html>
+ 
