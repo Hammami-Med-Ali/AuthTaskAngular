@@ -64,9 +64,10 @@
                 <p class="mb-0">ajouter une ticket</p>
               </div>
               <div class="card-body">
-                <form [formGroup]="registerform">
+                <form [formGroup]="createformt">
                   <label>Category</label>
                   <div class="mb-3">
+                    <input type="hidden" formControlName="id">
                     <input type="text" class="form-control" formControlName="category" placeholder="category" aria-label="category" aria-describedby="category-addon">
                   </div>
                   <label>Subject</label>

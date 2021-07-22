@@ -7,7 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { CreateticketComponent } from './createticket/createticket.component';
 import { AppRoutingModule } from './app.routing';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { IndexticketComponent } from './indexticket/indexticket.component';
 import { EditticketComponent } from './editticket/editticket.component';
@@ -15,6 +15,7 @@ import { EditticketComponent } from './editticket/editticket.component';
 @NgModule({
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
     RouterModule,

@@ -1,6 +1,6 @@
 import { Ticket } from './../Model/Ticket';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TicketService } from '../Ticket.Service';
 
@@ -10,39 +10,45 @@ import { TicketService } from '../Ticket.Service';
   styleUrls: ['./editticket.component.css']
 })
 export class EditticketComponent implements OnInit {
-  id:any;
-  data:any;
-  editform:any;
-  UserService:any;
-  activatedRoute: any;
+  editform:FormGroup;
+  id : any;
+  ticket:any;
   
-  constructor(public ticketservice: TicketService, private router: Router, public formbuilder: FormBuilder,private route: ActivatedRoute) { 
- 
-  this.editform = formbuilder.group({
-  
-    category: ["", [Validators.required]],
-    subject: ["", [Validators.required]],
-    description: ["", [Validators.required]],
+ //ticket : Ticket = new Ticket();
+  constructor( public ticketservice: TicketService, private router: Router, public formbuilder: FormBuilder,private route: ActivatedRoute) { 
+
+    this.editform = formbuilder.group({
+      id: ["", [Validators.required]],
+      category: ["", [Validators.required]],
+      subject: ["", [Validators.required]],
+      description: ["", [Validators.required]],
+      
+    })
+  }
+  ngOnInit(): void {
+    this.id = this.route.snapshot.queryParams.id;
+    console.log( this.route,'route');
     
-  })
-}
+    console.log(this.id);
+    this.ticketservice.getTicketByd(this.id).subscribe(data => {
+      this.ticket =data;
+      console.log(this.ticket);
+      this.editform.setValue(this.ticket);
+    }, error => console.log(error));
+  }
   
-ngOnInit() {
-   this.id = this.activatedRoute.snapshot.params["id"];
-  console.log(this.id);
-  this.ticketservice.getItem(this.id).subscribe(response => {
-    console.log(response);
-    this.data = response;
-    console.log(this.data);
-    this.editform.patchValue(this.data) */
+update()
+{
+  console.log(this.editform , 'edit form');
  
-  }) 
+this.ticketservice.updateTicket(this.id, this.editform.value).subscribe( data =>{
+  console.log(data);
+  this.goToTicketList();
 }
-update() {
-  
-  this.ticketservice.updateItem(this.id, this.editform.value).subscribe(response => {
-    this.router.navigate(['indexticket']); 
-   }) 
+, error => console.log(error));
 }
 
+goToTicketList(){
+this.router.navigate(['/indexticket']);
+}
 }

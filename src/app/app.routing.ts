@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { IndexticketComponent } from './indexticket/indexticket.component';
+import { EditticketComponent } from './editticket/editticket.component';
 
 const routes: Routes = [
     {
@@ -18,11 +19,11 @@ const routes: Routes = [
         path: "create", component: CreateticketComponent
     },
     {
-        path: "indexticket", component: IndexticketComponent
+        path: "editticket", component: EditticketComponent
     },
     {
-        path: "editticket", component: IndexticketComponent
-    },
+        path: "indexticket", component: IndexticketComponent
+    }
 ];
 
 @NgModule({

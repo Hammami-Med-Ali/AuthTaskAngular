@@ -26,7 +26,7 @@ export class UserService{
                 return this.http.post("http://127.0.0.1:8000/api/login", logininfo);   
             } 
             register(createinfo: any){
-         debugger;
+         
 
          
                 return this.http.post("http://127.0.0.1:8000/api/register", createinfo);   

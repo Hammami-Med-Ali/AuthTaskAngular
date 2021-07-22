@@ -33,8 +33,7 @@
               <td>
                 {{ticket.description}}
               </td>
-              <td> <button color="success" routerLink='/indexticket/{{
-                ticket.id }}'>Update</button></td>
+              <td> <button (click) = "updateTicket(ticket.id)" class = "btn btn-info"> Update</button>
             </tr>
             
             

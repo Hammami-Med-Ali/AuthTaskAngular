@@ -11,13 +11,13 @@ import { TicketService } from '../Ticket.Service';
 })
 export class CreateticketComponent implements OnInit {
 
-  registerform:any;
-  UserService:any;
+  createformt:any;
+  
   
   constructor(public ticketservice: TicketService, private router: Router, public formbuilder: FormBuilder,private route: ActivatedRoute) { 
 
-  this.registerform = formbuilder.group({
-  
+  this.createformt = formbuilder.group({
+    id: ["", [Validators.required]],
     category: ["", [Validators.required]],
     subject: ["", [Validators.required]],
     description: ["", [Validators.required]],
@@ -30,10 +30,10 @@ export class CreateticketComponent implements OnInit {
 
 
   createt(){
-    console.log(this.registerform.value);
+    console.log(this.createformt.value);
     
-    this.ticketservice.save(this.registerform.value).subscribe(res =>{
-       this.router.navigate(['indexticket']) 
+    this.ticketservice.save(this.createformt.value).subscribe(res =>{
+       this.router.navigate(['login']) 
     },err => {
       
     })
